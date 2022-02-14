@@ -32,14 +32,13 @@ public class TutorialServiceImpl implements ITutorialService {
 
 	@Override
 	public List<Tutorial> getTutorialbyPrize(int range1, int range2) {
-		
-		return null;
+		return tutorialRepository.getTutorialbyPrize(range1, range2);
 	}
 
 	@Override
 	public List<Tutorial> getTutorialbyRating(int range1, int range2) {
 		
-		return null;
+		return tutorialRepository.getTutorialbyRating(range1, range2);
 	}
 
 }

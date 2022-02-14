@@ -9,13 +9,17 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 
 
 
 @Entity
 public class Customer {
 	private Integer customerId;
+	@NotNull(message = "cutomer name should not be null")
 	private String customerName;
+	@Email
 	private String customerEmail;
 	private String username;
 	private String password;
