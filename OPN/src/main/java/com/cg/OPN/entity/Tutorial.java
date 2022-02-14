@@ -1,80 +1,110 @@
 package com.cg.OPN.entity;
 
+import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.SequenceGenerator;
 
 @Entity
 public class Tutorial {
 	
-	private String TutorialName;
-	private int TutorialId;
-	private String TutorialPrize;
-	private String TutorialRating;
-	private String TutorialReview;
-	private int StockAvailable;
+	@Id
+	@SequenceGenerator(name="myTutoriallogic",initialValue=200,allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.AUTO,generator="myTutoriallogic")
+	private String tutorialName;
+	private int tutorialId;
+	private int tutorialPrize;
+	private String tutorialRating;
+	private String tutorialReview;
+	private int stockAvailable;
 	
+	@ManyToMany(cascade=CascadeType.ALL)
+	@JoinTable(
+			name="Customer_Tutorial_Info",
+			joinColumns=@JoinColumn(name="tutorialdetails"),
+			inverseJoinColumns=@JoinColumn(name="customerdetails"))
+	private List<Tutorial> tutorials;
 	
-	public String getTutorialName() {
-		return TutorialName;
-	}
-	public void setTutorialName(String tutorialName) {
-		TutorialName = tutorialName;
-	}
-	public int getTutorialId() {
-		return TutorialId;
-	}
-	public void setTutorialId(int tutorialId) {
-		TutorialId = tutorialId;
-	}
-	public String getTutorialPrize() {
-		return TutorialPrize;
-	}
-	public void setTutorialPrize(String tutorialPrize) {
-		TutorialPrize = tutorialPrize;
-	}
-	public String getTutorialRating() {
-		return TutorialRating;
-	}
-	public void setTutorialRating(String tutorialRating) {
-		TutorialRating = tutorialRating;
-	}
-	public String getTutorialReview() {
-		return TutorialReview;
-	}
-	public void setTutorialReview(String tutorialReview) {
-		TutorialReview = tutorialReview;
-	}
-	public int getStockAvailable() {
-		return StockAvailable;
-	}
-	public void setStockAvailable(int stockAvailable) {
-		StockAvailable = stockAvailable;
-	}
-	@Override
-	public String toString() {
-		return "Tutorial [TutorialName=" + TutorialName + ", TutorialId=" + TutorialId + ", TutorialPrize="
-				+ TutorialPrize + ", TutorialRating=" + TutorialRating + ", TutorialReview=" + TutorialReview
-				+ ", StockAvailable=" + StockAvailable + "]";
-	}
-	@Override
-	public int hashCode() {
-		return Objects.hash(StockAvailable, TutorialId, TutorialName, TutorialPrize, TutorialRating, TutorialReview);
-	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Tutorial other = (Tutorial) obj;
-		return StockAvailable == other.StockAvailable && TutorialId == other.TutorialId
-				&& Objects.equals(TutorialName, other.TutorialName)
-				&& Objects.equals(TutorialPrize, other.TutorialPrize)
-				&& Objects.equals(TutorialRating, other.TutorialRating)
-				&& Objects.equals(TutorialReview, other.TutorialReview);
+	public Tutorial() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
-}
+	public Tutorial(String tutorialName, int tutorialId, int tutorialPrize, String tutorialRating,
+			String tutorialReview, int stockAvailable, List<Tutorial> tutorials) {
+		super();
+		this.tutorialName = tutorialName;
+		this.tutorialId = tutorialId;
+		this.tutorialPrize = tutorialPrize;
+		this.tutorialRating = tutorialRating;
+		this.tutorialReview = tutorialReview;
+		this.stockAvailable = stockAvailable;
+		this.tutorials = tutorials;
+	}
+
+	public String getTutorialName() {
+		return tutorialName;
+	}
+
+	public void setTutorialName(String tutorialName) {
+		this.tutorialName = tutorialName;
+	}
+
+	public int getTutorialId() {
+		return tutorialId;
+	}
+
+	public void setTutorialId(int tutorialId) {
+		this.tutorialId = tutorialId;
+	}
+
+	public int getTutorialPrize() {
+		return tutorialPrize;
+	}
+
+	public void setTutorialPrize(int tutorialPrize) {
+		this.tutorialPrize = tutorialPrize;
+	}
+
+	public String getTutorialRating() {
+		return tutorialRating;
+	}
+
+	public void setTutorialRating(String tutorialRating) {
+		this.tutorialRating = tutorialRating;
+	}
+
+	public String getTutorialReview() {
+		return tutorialReview;
+	}
+
+	public void setTutorialReview(String tutorialReview) {
+		this.tutorialReview = tutorialReview;
+	}
+
+	public int getStockAvailable() {
+		return stockAvailable;
+	}
+
+	public void setStockAvailable(int stockAvailable) {
+		this.stockAvailable = stockAvailable;
+	}
+
+	public List<Tutorial> getTutorials() {
+		return tutorials;
+	}
+
+	public void setTutorials(List<Tutorial> tutorials) {
+		this.tutorials = tutorials;
+	}
+	
+}	
+	
