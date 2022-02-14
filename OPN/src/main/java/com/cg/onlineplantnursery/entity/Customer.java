@@ -1,7 +1,16 @@
-package com.cg.OPN.entity;
+package com.cg.onlineplantnursery.entity;
 
+import java.util.List;
 import java.util.Objects;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+
+
 
 @Entity
 public class Customer {
@@ -10,11 +19,24 @@ public class Customer {
 	private String customerEmail;
 	private String username;
 	private String password;
+	
+	
+	@Embedded
 	private Address address;
 	
-	private Boolean Subscribe;
+	@ManyToMany(cascade=CascadeType.ALL)
+	@JoinTable(
+			name="Customer_Tutorial_Info",
+			joinColumns=@JoinColumn(name="customerdetails"),
+			inverseJoinColumns=@JoinColumn(name="tutorialdetails"))
+	private List<Tutorial> tutorials;
 	
 	
+	
+	public Customer(List<Tutorial> tutorials) {
+		super();
+		this.tutorials = tutorials;
+	}
 	@Override
 	public String toString() {
 		return "Customer [customerId=" + customerId + ", customerName=" + customerName + ", customerEmail="
@@ -75,6 +97,15 @@ public class Customer {
 	}
 	public void setAddress(Address address) {
 		this.address = address;
+	}
+	public void setTutorials(List<Tutorial> tutorials) {
+		// TODO Auto-generated method stub
+		this.tutorials = tutorials;
+		
+	}
+	public List<Tutorial> getTutorials() {
+		// TODO Auto-generated method stub
+		return tutorials;
 	}
 	
 	

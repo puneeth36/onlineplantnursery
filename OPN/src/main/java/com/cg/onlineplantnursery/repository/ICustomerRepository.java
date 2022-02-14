@@ -1,21 +1,14 @@
-package com.cg.OPN.repository;
+package com.cg.onlineplantnursery.repository;
 
-import java.util.List;
+import org.springframework.data.repository.CrudRepository;
 
-import com.cg.OPN.entity.Customer;
+import com.cg.onlineplantnursery.entity.Customer;
 
-public interface ICustomerRepository {
+public interface ICustomerRepository extends CrudRepository<Customer, Integer> 
+     
+{
+   // findALL , Save, findById , delete 
+	// +
 	
-		Customer addCustomer(Customer customer);
-
-		Customer updateCustomer(Customer tenant);
-
-		Customer deleteCustomer(Customer tenant);
-
-		Customer viewCustomer(int customerId);
-
-		List<Customer> viewAllCustomers();
-
-		boolean validateCustomer(String userName, String password);
-
+	// methods from custom account repository
 }

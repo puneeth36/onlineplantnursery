@@ -1,4 +1,4 @@
-package com.cg.OPN.entity;
+package com.cg.onlineplantnursery.entity;
 
 import java.util.Objects;
 

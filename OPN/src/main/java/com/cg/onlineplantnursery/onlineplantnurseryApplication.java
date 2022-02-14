@@ -1,13 +1,14 @@
-package com.cg.OPN;
+package com.cg.onlineplantnursery;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+
 @SpringBootApplication
-public class OpnApplication {
+public class onlineplantnurseryApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(OpnApplication.class, args);
+		SpringApplication.run(onlineplantnurseryApplication.class, args);
 	}
 
 }

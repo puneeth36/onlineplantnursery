@@ -1,20 +1,17 @@
-package com.cg.OPN.service;
+package com.cg.onlineplantnursery.service;
 
 import java.util.List;
 
-import com.cg.OPN.entity.Customer;
+import com.cg.onlineplantnursery.entity.Customer;
+
 
 public interface ICustomerService {
-	Customer addCustomer(Customer customer);
 
-	Customer updateCustomer(Customer tenant);
-
-	Customer deleteCustomer(Customer tenant);
-
-	Customer viewCustomer(int customerId);
-
-	List<Customer> viewAllCustomers();
-
-	boolean validateCustomer(String userName, String password);
+	public boolean saveCustomer(Customer customer);
+	public Customer getCustomerById(int customerId);
+	public List<Customer> getAllCustomers();
+	public boolean deleteCustomerByID(int customerId);
+	public boolean checkCustomerByID(int customerId);
+	public boolean subscribeTutorial(int customerId,int tutorialId);
 
 }
