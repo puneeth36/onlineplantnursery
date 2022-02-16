@@ -7,19 +7,22 @@ import javax.persistence.EntityManager;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.cg.onlineplantnursery.entity.Tutorial;
 
-
+@Repository
 public class CustomCustomerRepoImpl implements CustomCustomerRepo {
 	@Autowired
 	EntityManager entityManager;  // as a Session in Hibernate
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public List<Tutorial> getTutorialbyPrize(int range1, int range2) {
 		Session session = entityManager.unwrap(Session.class);
 		String queryString = "from Tutorial a where tutorialPrize between ? and ?";
 		
+		@SuppressWarnings("unchecked")
 		Query<Tutorial> query = session.createQuery(queryString);
 	query.setString(1, "range1");
 	query.setString(2, "range2");
@@ -38,11 +41,13 @@ public class CustomCustomerRepoImpl implements CustomCustomerRepo {
 		}
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public List<Tutorial> getTutorialbyRating(int range1, int range2) {
 		Session session = entityManager.unwrap(Session.class);
 		String queryString = "from Tutorial a where tutorialRating between ? and ?";
 		
+		@SuppressWarnings("unchecked")
 		Query<Tutorial> query = session.createQuery(queryString);
 	query.setString(1, "range1");
 	query.setString(2, "range2");

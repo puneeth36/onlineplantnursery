@@ -2,9 +2,11 @@ package com.cg.onlineplantnursery.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.cg.onlineplantnursery.entity.Customer;
 
-
+@Service
 public interface ICustomerService {
 
 	public boolean saveCustomer(Customer customer);

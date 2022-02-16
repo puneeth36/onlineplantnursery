@@ -15,6 +15,7 @@ import com.cg.onlineplantnursery.repository.ITutorialRepository;
 
 
 @Service
+
 public class CustomerServiceImpl implements ICustomerService{
 	
 	@Autowired

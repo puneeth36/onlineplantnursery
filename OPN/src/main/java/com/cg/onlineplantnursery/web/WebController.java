@@ -35,11 +35,12 @@ public class WebController {
 	 
 	
 	@PostMapping("/tutorial")
-	public ResponseEntity<Boolean> addPolicy(@RequestParam int customerId ,@RequestParam int tutorialId)
+	public ResponseEntity<Boolean> addTutorial(@RequestParam int customerId ,@RequestParam int tutorialId)
 	{
 		boolean a = service.subscribeTutorial(customerId,tutorialId);
 		return new ResponseEntity<Boolean>(a, HttpStatus.OK);
 	}
+	
 	
 		
 }

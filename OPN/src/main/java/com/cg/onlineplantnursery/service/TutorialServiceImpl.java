@@ -3,16 +3,22 @@ package com.cg.onlineplantnursery.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import com.cg.onlineplantnursery.DTO.TutorialBasicInfoDTO;
+import com.cg.onlineplantnursery.DTO.TutorialSavePostDTO;
 import com.cg.onlineplantnursery.entity.Tutorial;
 import com.cg.onlineplantnursery.repository.ITutorialRepository;
+import com.cg.onlineplantnursery.util.TutorialDTOConversion;
 
 
-
+@Service
 public class TutorialServiceImpl implements ITutorialService {
 	@Autowired
 	ITutorialRepository tutorialRepository;
 
+	@Autowired
+	TutorialDTOConversion dtoConversion;
 	@Override
 	public boolean createTutorial(Tutorial tutorial) {
 		Tutorial saveData =  tutorialRepository.save(tutorial);
@@ -39,6 +45,15 @@ public class TutorialServiceImpl implements ITutorialService {
 	public List<Tutorial> getTutorialbyRating(int range1, int range2) {
 		
 		return tutorialRepository.getTutorialbyRating(range1, range2);
+	}
+
+	@Override
+	public TutorialBasicInfoDTO getTutorialSavePostDTO(TutorialSavePostDTO dto) {
+		Tutorial t = dtoConversion.getTutorialSavePostDTO(dto);
+		Tutorial saveObj = tutorialRepository.save(t);
+		TutorialBasicInfoDTO dtoObj = dtoConversion.getTutorialBasiInfoDTO(saveObj);
+		return dtoObj;
+		// TODO Auto-generated method stub
 	}
 
 }
