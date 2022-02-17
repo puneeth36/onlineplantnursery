@@ -20,12 +20,12 @@ public class CustomCustomerRepoImpl implements CustomCustomerRepo {
 	@Override
 	public List<Tutorial> getTutorialbyPrize(int range1, int range2) {
 		Session session = entityManager.unwrap(Session.class);
-		String queryString = "from Tutorial a where tutorialPrize between ? and ?";
+		String queryString = "from Tutorial a where  a.tutorialPrize>=:range1 and a.tutorialPrize<=:range2";
 		
 		@SuppressWarnings("unchecked")
 		Query<Tutorial> query = session.createQuery(queryString);
-	query.setString(1, "range1");
-	query.setString(2, "range2");
+	query.setInteger("range1", range1);
+	query.setInteger("range2", range2);
 	
 		List<Tutorial>  list = (List<Tutorial>) query.getResultList();
 		
@@ -45,12 +45,12 @@ public class CustomCustomerRepoImpl implements CustomCustomerRepo {
 	@Override
 	public List<Tutorial> getTutorialbyRating(int range1, int range2) {
 		Session session = entityManager.unwrap(Session.class);
-		String queryString = "from Tutorial a where tutorialRating between ? and ?";
+		String queryString = "from Tutorial a where  a.tutorialRating>=:range1 and a.tutorialRating<=:range2";
 		
 		@SuppressWarnings("unchecked")
 		Query<Tutorial> query = session.createQuery(queryString);
-	query.setString(1, "range1");
-	query.setString(2, "range2");
+	query.setInteger("range1", range1);
+	query.setInteger("range2", range2);
 	
 		List<Tutorial>  list = (List<Tutorial>) query.getResultList();
 		

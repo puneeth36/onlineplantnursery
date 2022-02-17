@@ -55,12 +55,12 @@ public class TutorialRestController {
 		return new ResponseEntity<List<Tutorial>>(list!=null?list:null,HttpStatus.OK);
 	
 	}
-	@GetMapping("/tutorial")
-	public List<Tutorial> getTutorialbyPrize(@RequestParam int range1,@RequestParam int range2) throws NoResultException{
+	@GetMapping("/tutorialbyp/{range1}/{range2}")
+	public List<Tutorial> getTutorialbyPrize(@PathVariable int range1,@PathVariable int range2) throws NoResultException{
 		return tutorialService.getTutorialbyPrize(range1, range2);
 	}
-	@GetMapping("/tutorial/tutorial")
-	public List<Tutorial> getTutorialbyRating(@RequestParam int range1,@RequestParam int range2) throws NoResultException{
+	@GetMapping("/tutorialbyr/{range1}/{range2}")
+	public List<Tutorial> getTutorialbyRating(@PathVariable int range1,@PathVariable int range2) throws NoResultException{
 		return tutorialService.getTutorialbyRating(range1, range2);
 		
 	}
